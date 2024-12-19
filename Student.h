@@ -1,5 +1,7 @@
 #include<iostream>
-
+/*
+Author: jay williamson
+  */
   class Student
   {
     public:
