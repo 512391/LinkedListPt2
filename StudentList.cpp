@@ -7,7 +7,7 @@
 /*
   Author: Jay Williamson
   Date: 10/24/2024
-  This program maintains a list of students which can be added to or deleted from
+  This program maintains a linked list of students which can be added to or deleted from
   you can also print the students and type QUIT to exit
  */
 
@@ -145,7 +145,7 @@ Node* addNode(Node* previous, Node* head, Node* toAdd, Node* returnHead)
   //if it is at the end of the list it sets the toAdd to the end of the list
   if(head->getNext() == nullptr)
     {
-      //sets the toAdd tot he end of the list
+      //sets the toAdd to the end of the list
       if(toAdd->getStudent()->id > head->getStudent()->id) //if it is not at the end of the list it keeps traversing to the end
 	{
 	  head->setNext(toAdd);
@@ -171,13 +171,16 @@ Node* addNode(Node* previous, Node* head, Node* toAdd, Node* returnHead)
     }
   else
     {
+//checks if at the top of the list
       if(previous == nullptr)
 	{
+//if it is toAdd is the new head
 	  toAdd->setNext(head);
 	  return toAdd;
 	}
       else
 	{
+//otherwise it inserts itself into the list
 	  previous->setNext(toAdd);
 	  toAdd->setNext(head);
 	  return returnHead;
@@ -185,16 +188,22 @@ Node* addNode(Node* previous, Node* head, Node* toAdd, Node* returnHead)
     }
 }
 
+//this returns the average gpa
 float getAverageGPA(Node* current, int amountOfNodes, float amount)
 {
+//counts the amount of nodes
   amountOfNodes++;
+//gets the current amount of gpa
   amount += current->getStudent()->GPA;
+//checks if there are more nodes
   if(current->getNext() == nullptr)
     {
+//if there are no more nodes it returns the averaege
       return amount/amountOfNodes;
     }
   else
     {
+//otherwise it gets the next node and gets that average
       getAverageGPA(current->getNext(), amountOfNodes, amount);
     }
 }
@@ -242,7 +251,7 @@ int main()
 	  cin >> id;
 
 	  head = deleteName(head, head, nullptr, id);
-	}
+	}//this gets the average of the linked list GPAs
       else if(strncmp(input, "AVG", 3) == 0)
         {
 	  cout << getAverageGPA(head, 0, 0) << endl;
