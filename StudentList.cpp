@@ -60,7 +60,7 @@ void printNames(Node* head)
 
   //outputs the stuff
   cout << "ID: " << currentStudent->id << "\n";
-  cout << setprecision(2);
+  cout << setprecision(3);
   cout << "GPA: " << currentStudent->GPA << "\n";
   cout << "First Name: " << currentStudent->firstName << "\n";
   cout << "Last name: " << currentStudent->lastName << "\n";
